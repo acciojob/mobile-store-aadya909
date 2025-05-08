@@ -78,22 +78,18 @@ function AdminPanel({ products, setProducts }) {
             <Link to={`/products/${product.id}`}>
               <div className="row">
                 <div className="col">{product.name}</div>
+                <div className="col">{product.description}</div>
                 <div className="col">
                   <input
                     className="form-control"
                     type="number"
                     value={product.price}
-                    onChange={(e) =>
-                      editPrice(product.id, e.target.value)
-                    }
+                    onChange={(e) => editPrice(product.id, e.target.value)}
                   />
                 </div>
               </div>
             </Link>
-            <button
-              className="float-right"
-              onClick={() => deleteProduct(product.id)}
-            >
+            <button className="float-right" onClick={() => deleteProduct(product.id)}>
               Delete
             </button>
           </div>
@@ -104,4 +100,5 @@ function AdminPanel({ products, setProducts }) {
 }
 
 export default AdminPanel;
+
 
