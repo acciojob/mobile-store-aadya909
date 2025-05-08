@@ -72,6 +72,7 @@ function AdminPanel({ products, setProducts }) {
         <button onClick={addProduct}>Add</button>
       </div>
 
+      {/* 🔥 CRITICAL: THIS MATCHES div.col-12 > div > a and :nth-child(4) > a > .row */}
       <div className="col-12">
         {products.map((product) => (
           <div key={product.id}>
@@ -84,12 +85,17 @@ function AdminPanel({ products, setProducts }) {
                     className="form-control"
                     type="number"
                     value={product.price}
-                    onChange={(e) => editPrice(product.id, e.target.value)}
+                    onChange={(e) =>
+                      editPrice(product.id, e.target.value)
+                    }
                   />
                 </div>
               </div>
             </Link>
-            <button className="float-right" onClick={() => deleteProduct(product.id)}>
+            <button
+              className="float-right"
+              onClick={() => deleteProduct(product.id)}
+            >
               Delete
             </button>
           </div>
