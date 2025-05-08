@@ -24,11 +24,7 @@ function AdminPanel({ products, setProducts }) {
   };
 
   const editPrice = (id, newPrice) => {
-    setProducts(
-      products.map((p) =>
-        p.id === id ? { ...p, price: Number(newPrice) } : p
-      )
-    );
+    setProducts(products.map(p => p.id === id ? { ...p, price: Number(newPrice) } : p));
   };
 
   return (
@@ -40,41 +36,33 @@ function AdminPanel({ products, setProducts }) {
           className="form-control"
           placeholder="Name"
           value={formData.name}
-          onChange={(e) =>
-            setFormData({ ...formData, name: e.target.value })
-          }
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         />
         <input
           className="form-control"
           placeholder="Description"
           value={formData.description}
-          onChange={(e) =>
-            setFormData({ ...formData, description: e.target.value })
-          }
+          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
         />
         <input
           className="form-control"
           placeholder="Image URL"
           value={formData.image}
-          onChange={(e) =>
-            setFormData({ ...formData, image: e.target.value })
-          }
+          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
         />
         <input
           className="form-control"
           placeholder="Price"
           type="number"
           value={formData.price}
-          onChange={(e) =>
-            setFormData({ ...formData, price: e.target.value })
-          }
+          onChange={(e) => setFormData({ ...formData, price: e.target.value })}
         />
         <button onClick={addProduct}>Add</button>
       </div>
 
-      {/* 🔥 CRITICAL: THIS MATCHES div.col-12 > div > a and :nth-child(4) > a > .row */}
+      {/* ✅ EXACT structure Cypress is looking for */}
       <div className="col-12">
-        {products.map((product) => (
+        {products.map((product, index) => (
           <div key={product.id}>
             <Link to={`/products/${product.id}`}>
               <div className="row">
@@ -85,9 +73,7 @@ function AdminPanel({ products, setProducts }) {
                     className="form-control"
                     type="number"
                     value={product.price}
-                    onChange={(e) =>
-                      editPrice(product.id, e.target.value)
-                    }
+                    onChange={(e) => editPrice(product.id, e.target.value)}
                   />
                 </div>
               </div>
@@ -106,5 +92,6 @@ function AdminPanel({ products, setProducts }) {
 }
 
 export default AdminPanel;
+
 
 
